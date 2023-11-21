@@ -4,31 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
-public class CountdownText : MonoBehaviour {
-
+public class CountdownText : MonoBehaviour
+{
 	public delegate void CountdownFinished();
 	public static event CountdownFinished OnCountdownFinished;
 
-
 	Text countdown;
 
-	void OnEnable(){
+	void OnEnable()
+	{
 		countdown = GetComponent<Text>();
 		countdown.text = "3";
-		StartCoroutine ("Countdown");
-	
-	
+		StartCoroutine("Countdown");
+
 	}
 
-	IEnumerator Countdown(){
+	IEnumerator Countdown()
+	{
 		int count = 3;
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < count; i++)
+		{
 			countdown.text = (count - i).ToString();
-			yield return new WaitForSeconds (1);
-		
-		
+			yield return new WaitForSeconds(1);
+
 		}
-	
-		OnCountdownFinished ();
+
+		OnCountdownFinished();
 	}
 }
