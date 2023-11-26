@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 	public GameObject startPage;
 	public GameObject gameOverPage;
 	public GameObject countdownPage;
+	public GameObject woodsSpawner;
 	public Text scoreText;
 
 	enum PageState
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	int score = 0;
-	bool gameOver = false;
+	bool gameOver = true;
 
 	public bool GameOver { get { return gameOver; } }
 
@@ -88,21 +89,25 @@ public class GameManager : MonoBehaviour
 				startPage.SetActive(false);
 				gameOverPage.SetActive(false);
 				countdownPage.SetActive(false);
+				woodsSpawner.SetActive(true);
 				break;
 			case PageState.Start:
 				startPage.SetActive(true);
 				gameOverPage.SetActive(false);
 				countdownPage.SetActive(false);
+				woodsSpawner.SetActive(false);
 				break;
 			case PageState.GameOver:
 				startPage.SetActive(false);
 				gameOverPage.SetActive(true);
 				countdownPage.SetActive(false);
+				woodsSpawner.SetActive(false);
 				break;
 			case PageState.Countdown:
 				startPage.SetActive(false);
 				gameOverPage.SetActive(false);
 				countdownPage.SetActive(true);
+				woodsSpawner.SetActive(false);
 				break;
 
 		}

@@ -861,6 +861,7 @@ MonoBehaviour:
   startPage: {fileID: 1982114992}
   gameOverPage: {fileID: 1572911945}
   countdownPage: {fileID: 190962899}
+  woodsSpawner: {fileID: 1717522760}
   scoreText: {fileID: 1724245537}
 --- !u!1 &972887360
 GameObject:
@@ -1511,10 +1512,10 @@ RectTransform:
   m_Father: {fileID: 1982114993}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.44875666, y: 0.064856194}
-  m_AnchorMax: {x: 0.565, y: 0.126}
-  m_AnchoredPosition: {x: -34, y: 291}
-  m_SizeDelta: {x: 7, y: 22}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -90}
+  m_SizeDelta: {x: 131, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1446947458
 MonoBehaviour:
@@ -1851,10 +1852,10 @@ RectTransform:
   m_Father: {fileID: 1982114993}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.203677, y: 0.45987}
-  m_AnchorMax: {x: 0.7777833, y: 0.52673894}
-  m_AnchoredPosition: {x: -10, y: 8}
-  m_SizeDelta: {x: 82.9, y: 31.8}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 26}
+  m_SizeDelta: {x: 694.9, y: 71.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1639588592
 MonoBehaviour:
