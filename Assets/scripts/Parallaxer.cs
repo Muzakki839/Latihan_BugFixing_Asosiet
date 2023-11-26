@@ -81,9 +81,6 @@ public class Parallaxer : MonoBehaviour
 	}
 	void Update()
 	{
-		if (game.GameOver)
-			return;
-
 		Shift();
 		spawnTimer += Time.deltaTime;
 
@@ -91,6 +88,12 @@ public class Parallaxer : MonoBehaviour
 		{
 			Spawn();
 			spawnTimer = 0;
+		}
+
+		if (game.GameOver)
+		{
+			return;
+
 		}
 	}
 

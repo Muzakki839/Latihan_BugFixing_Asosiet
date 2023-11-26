@@ -50,6 +50,7 @@ public class TapController : MonoBehaviour
 	{
 		rb.velocity = Vector3.zero;
 		rb.simulated = true;
+		// Debug.Log(game.GameOver);
 
 	}
 	void OnGameOverConfirmed()
@@ -59,11 +60,6 @@ public class TapController : MonoBehaviour
 	}
 	void Update()
 	{
-		if (game.GameOver)
-		{
-			rb.simulated = false;
-			return;
-		}
 
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -74,8 +70,13 @@ public class TapController : MonoBehaviour
 
 		}
 
-		// transform.rotation = Quaternion.Lerp(transform.rotation, downrotation, tiltSmooth * Time.deltaTime);
+		transform.rotation = Quaternion.Lerp(transform.rotation, downrotation, tiltSmooth * Time.deltaTime);
 
+		if (game.GameOver)
+		{
+			rb.simulated = false;
+			return;
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col)

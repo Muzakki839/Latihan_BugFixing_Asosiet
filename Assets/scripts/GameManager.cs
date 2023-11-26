@@ -24,9 +24,9 @@ public class GameManager : MonoBehaviour
 	}
 
 	int score = 0;
-	bool gameOver = true;
+	bool gameOver = false;
 
-	public bool GameOver { get { return !gameOver; } }
+	public bool GameOver { get { return gameOver; } }
 
 	void Awake()
 	{
@@ -53,9 +53,10 @@ public class GameManager : MonoBehaviour
 	void OnCountdownFinished()
 	{
 		SetPageState(PageState.None);
-		OnGameStarted();
 		score = 0;
+		OnGameStarted();
 		gameOver = false;
+		// Debug.Log(gameOver);
 
 	}
 
