@@ -23,7 +23,6 @@ public class TapController : MonoBehaviour
 
 	GameManager game;
 
-
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
@@ -43,7 +42,6 @@ public class TapController : MonoBehaviour
 	{
 		GameManager.OnGameStarted -= OnGameStarted;
 		GameManager.OnGameOverConfirmed -= OnGameOverConfirmed;
-
 	}
 
 	void OnGameStarted()
@@ -51,23 +49,22 @@ public class TapController : MonoBehaviour
 		rb.velocity = Vector3.zero;
 		rb.simulated = true;
 		// Debug.Log(game.GameOver);
-
 	}
+
 	void OnGameOverConfirmed()
 	{
 		transform.localPosition = startPos;
 		transform.rotation = Quaternion.identity;
 	}
+
 	void Update()
 	{
-
 		if (Input.GetMouseButtonDown(0))
 		{
 			tapAudio.Play();
 			transform.rotation = forwardrotation;
 			rb.velocity = Vector3.zero;
 			rb.AddForce(Vector2.up * tapForce, ForceMode2D.Force);
-
 		}
 
 		transform.rotation = Quaternion.Lerp(transform.rotation, downrotation, tiltSmooth * Time.deltaTime);
@@ -83,19 +80,15 @@ public class TapController : MonoBehaviour
 	{
 		if (col.gameObject.CompareTag("ScoreZone"))
 		{
-
 			OnPlayerScored();
 			scoreAudio.Play();
 		}
 
 		if (col.gameObject.CompareTag("DeadZone"))
 		{
-
 			rb.simulated = false;
 			OnPlayerDied();
 			dieAudio.Play();
 		}
-
 	}
-
 }
