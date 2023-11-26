@@ -66,7 +66,7 @@ public class TapController : MonoBehaviour
 			tapAudio.Play();
 			transform.rotation = forwardrotation;
 			rb.velocity = Vector3.zero;
-			rb.AddForce(Vector2.down * tapForce, ForceMode2D.Force);
+			rb.AddForce(Vector2.up * tapForce, ForceMode2D.Force);
 
 		}
 
