@@ -25,7 +25,6 @@ public class Parallaxer : MonoBehaviour
 	{
 		public float min;
 		public float max;
-
 	}
 
 	public GameObject Prefab;
@@ -46,39 +45,38 @@ public class Parallaxer : MonoBehaviour
 
 	void Awake()
 	{
-
 		Configure();
 	}
 
 	void Start()
 	{
 		game = GameManager.Instance;
-
 	}
 
 	void OnEnable()
 	{
 		GameManager.OnGameOverConfirmed += OnGameOverConfirmed;
 	}
+
 	void OnDisable()
 	{
 		GameManager.OnGameOverConfirmed -= OnGameOverConfirmed;
 	}
+
 	void OnGameOverConfirmed()
 	{
 		for (int i = 0; i < poolObjects.Length; i++)
 		{
 			poolObjects[i].Dispose();
 			poolObjects[i].transform.position = Vector3.one * 1000;
-
 		}
 		if (spawnImmediate)
 		{
 			SpawnImmediate();
-
 		}
 
 	}
+
 	void Update()
 	{
 		Shift();
@@ -93,35 +91,29 @@ public class Parallaxer : MonoBehaviour
 		if (game.GameOver)
 		{
 			return;
-
 		}
 	}
 
 	void Configure()
 	{
-
 		targetAspect = targetAspectsRatio.x / targetAspectsRatio.y;
 		poolObjects = new PoolObject[poolSize];
 		for (int i = 0; i < poolObjects.Length; i++)
 		{
-
 			GameObject go = Instantiate(Prefab) as GameObject;
 			Transform t = go.transform;
 			t.SetParent(transform);
 			t.position = Vector3.one * 1000;
 			poolObjects[i] = new PoolObject(t);
-
 		}
 		if (spawnImmediate)
 		{
 			SpawnImmediate();
-
 		}
 	}
 
 	void Spawn()
 	{
-
 		Transform t = GetPoolObject();
 		if (t == null)
 			return;

@@ -28,8 +28,7 @@ public class CountdownText : MonoBehaviour
 			yield return new WaitForSeconds(1);
 		}
 
-		if (OnCountdownFinished != null)
-			OnCountdownFinished();
-	}
+        OnCountdownFinished?.Invoke();
+    }
 
 }

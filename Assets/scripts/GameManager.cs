@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	int score = 0;
-	bool gameOver = true;
+	bool gameOver = false;
 
 	public bool GameOver { get { return gameOver; } }
 
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
 	void OnPlayerDied()
 	{
-		gameOver = true;
+		gameOver = false;
 		int savedScore = PlayerPrefs.GetInt("highscore");
 		if (score < savedScore)
 		{
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour
 				startPage.SetActive(false);
 				gameOverPage.SetActive(true);
 				countdownPage.SetActive(false);
-				woodsSpawner.SetActive(false);
+				woodsSpawner.SetActive(true);
 				break;
 			case PageState.Countdown:
 				startPage.SetActive(false);
