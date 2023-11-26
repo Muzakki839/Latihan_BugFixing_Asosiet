@@ -74,11 +74,15 @@ public class Parallaxer : MonoBehaviour
 		{
 			SpawnImmediate();
 		}
-
 	}
 
 	void Update()
 	{
+		if (game.GameOver)
+		{
+			return;
+		}
+
 		Shift();
 		spawnTimer += Time.deltaTime;
 
@@ -88,10 +92,6 @@ public class Parallaxer : MonoBehaviour
 			spawnTimer = 0;
 		}
 
-		if (game.GameOver)
-		{
-			return;
-		}
 	}
 
 	void Configure()
@@ -139,10 +139,8 @@ public class Parallaxer : MonoBehaviour
 	{
 		for (int i = 0; i < poolObjects.Length; i++)
 		{
-
 			poolObjects[i].transform.position += -Vector3.right * shiftSpeed * Time.deltaTime;
 			CheckDisposeObject(poolObjects[i]);
-
 		}
 	}
 
@@ -153,14 +151,12 @@ public class Parallaxer : MonoBehaviour
 			poolObject.Dispose();
 			poolObject.transform.position = Vector3.one * 1000;
 		}
-
 	}
 
 	Transform GetPoolObject()
 	{
 		for (int i = 0; i < poolObjects.Length; i++)
 		{
-
 			if (!poolObjects[i].inUse)
 			{
 				poolObjects[i].Use();
@@ -169,5 +165,4 @@ public class Parallaxer : MonoBehaviour
 		}
 		return null;
 	}
-
 }

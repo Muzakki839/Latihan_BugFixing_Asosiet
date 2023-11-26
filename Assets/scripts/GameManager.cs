@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 	public GameObject startPage;
 	public GameObject gameOverPage;
 	public GameObject countdownPage;
-	public GameObject woodsSpawner;
 	public Text scoreText;
 
 	enum PageState
@@ -25,13 +24,12 @@ public class GameManager : MonoBehaviour
 	}
 
 	int score = 0;
-	bool gameOver = false;
+	bool gameOver = true;
 
 	public bool GameOver { get { return gameOver; } }
 
 	void Awake()
 	{
-
 		Instance = this;
 	}
 
@@ -40,7 +38,6 @@ public class GameManager : MonoBehaviour
 		TapController.OnPlayerDied += OnPlayerDied;
 		TapController.OnPlayerScored += OnPlayerScored;
 		CountdownText.OnCountdownFinished += OnCountdownFinished;
-
 	}
 
 	void OnDisable()
@@ -48,7 +45,6 @@ public class GameManager : MonoBehaviour
 		CountdownText.OnCountdownFinished -= OnCountdownFinished;
 		TapController.OnPlayerDied -= OnPlayerDied;
 		TapController.OnPlayerScored -= OnPlayerScored;
-
 	}
 
 	void OnCountdownFinished()
@@ -58,17 +54,15 @@ public class GameManager : MonoBehaviour
 		OnGameStarted();
 		gameOver = false;
 		// Debug.Log(gameOver);
-
 	}
 
 	void OnPlayerDied()
 	{
-		gameOver = false;
+		gameOver = true;
 		int savedScore = PlayerPrefs.GetInt("highscore");
 		if (score < savedScore)
 		{
 			PlayerPrefs.SetInt("highscore", score);
-
 		}
 		SetPageState(PageState.GameOver);
 	}
@@ -83,32 +77,26 @@ public class GameManager : MonoBehaviour
 	{
 		switch (state)
 		{
-
 			case PageState.None:
 				startPage.SetActive(false);
 				gameOverPage.SetActive(false);
 				countdownPage.SetActive(false);
-				woodsSpawner.SetActive(true);
 				break;
 			case PageState.Start:
 				startPage.SetActive(true);
 				gameOverPage.SetActive(false);
 				countdownPage.SetActive(false);
-				woodsSpawner.SetActive(false);
 				break;
 			case PageState.GameOver:
 				startPage.SetActive(false);
 				gameOverPage.SetActive(true);
 				countdownPage.SetActive(false);
-				woodsSpawner.SetActive(true);
 				break;
 			case PageState.Countdown:
 				startPage.SetActive(false);
 				gameOverPage.SetActive(false);
 				countdownPage.SetActive(true);
-				woodsSpawner.SetActive(false);
 				break;
-
 		}
 	}
 

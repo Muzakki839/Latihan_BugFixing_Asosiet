@@ -59,6 +59,12 @@ public class TapController : MonoBehaviour
 
 	void Update()
 	{
+		if (game.GameOver)
+		{
+			rb.simulated = false;
+			return;
+		}
+
 		if (Input.GetMouseButtonDown(0))
 		{
 			tapAudio.Play();
@@ -68,12 +74,6 @@ public class TapController : MonoBehaviour
 		}
 
 		transform.rotation = Quaternion.Lerp(transform.rotation, downrotation, tiltSmooth * Time.deltaTime);
-
-		if (game.GameOver)
-		{
-			rb.simulated = false;
-			return;
-		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col)

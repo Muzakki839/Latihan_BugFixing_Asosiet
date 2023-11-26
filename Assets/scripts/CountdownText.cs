@@ -30,5 +30,4 @@ public class CountdownText : MonoBehaviour
 
         OnCountdownFinished?.Invoke();
     }
-
 }
