@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 	{
 		TapController.OnPlayerDied += OnPlayerDied;
 		TapController.OnPlayerScored += OnPlayerScored;
+		CountdownText.OnCountdownFinished += OnCountdownFinished;
 
 	}
 
